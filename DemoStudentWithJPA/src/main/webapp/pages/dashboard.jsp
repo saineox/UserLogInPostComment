@@ -39,7 +39,8 @@
 										Comments</a></li>
 								<li><a href="commentdesorted"><i class="icon-picture"></i>
 										commentdesorted</a></li> -->
-
+										<a href="commentsorted"><i class="icon-comment"></i>
+											Comments</a></li>
 
 							</ul>
 						</div>
@@ -53,7 +54,10 @@
 						<c:forEach items="${postList}" var="post" varStatus="loop">
 							<tr>
 								<td>
-									<h1>	<c:out value="${post.post_title}" /> </h1>
+									<h1><a href="createcomment/${post.post_id}" >
+											<c:out value="${post.post_title}" /> 
+										</a>
+									</h1>
 									<p><c:out value="${post.post_info}" /></p>
 										<div>
 											<span class="badge badge-success">Posted 2012-08-02 20:47:04</span>

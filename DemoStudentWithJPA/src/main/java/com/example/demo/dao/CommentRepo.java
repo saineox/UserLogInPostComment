@@ -15,4 +15,8 @@ public interface CommentRepo extends JpaRepository<Comment, Integer>
 {
 	@Query("from Comment order by comment_id desc")
 	List<Comment> getCommentDeSorted();
+	
+	//@Query("from Comment order by comment_id desc")
+	@Query("from Comment where post_id = ?1")
+	List<Comment> findByPost_Id(Integer post_id);
 }

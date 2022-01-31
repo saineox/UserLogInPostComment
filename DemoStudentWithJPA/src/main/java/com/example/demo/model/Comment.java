@@ -13,7 +13,7 @@ import javax.persistence.Table;
 //@Getter
 //@Setter
 @Entity
-@Table(name="Comment_Info")
+@Table(name="Comment_Info2")
 public class Comment 
 { 
 	@Id
@@ -21,17 +21,44 @@ public class Comment
 	@Column(name="comment_id")
 	private int comment_id;
 		
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;	
 	
-	@JoinColumn(name="post_id")
+	@JoinColumn(name="user_id", insertable = false, updatable = false)
+	@ManyToOne
+	private User user;	
+	public Integer getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
+	}
+
+	@Column(name="user_id")
+	private Integer user_id;
+	
+	
+	@JoinColumn(name="post_id", insertable = false, updatable = false)
 	@ManyToOne
 	private Post post;
+	@Column(name="post_id")
+	private Integer post_id;
+	
 	
 	private String user_comm;
 	
 	private boolean comment_status;
+
+
+
+
+
+	public Integer getPost_id() {
+		return post_id;
+	}
+
+	public void setPost_id(Integer post_id) {
+		this.post_id = post_id;
+	}
 
 	public int getComment_id() {
 		return comment_id;
@@ -73,14 +100,7 @@ public class Comment
 		this.comment_status = comment_status;
 	}
 
-	@Override
-	public String toString() {
-		return "Comment [comment_id=" + comment_id + ", user=" + user + ", post=" + post + ", user_comm=" + user_comm
-				+ ", comment_status=" + comment_status + "]";
-	}
-	
-	
-	
+
 	
 	
 }

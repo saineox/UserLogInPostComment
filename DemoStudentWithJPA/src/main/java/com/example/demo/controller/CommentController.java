@@ -20,49 +20,44 @@ public class CommentController
 {
 	@Autowired
 	CommentRepo commentr;
-	
-//	@RequestMapping("createcomment")
-//	public String addComment()
-//	{
-//		//commentr.save(p);
-//		return "createcomment";
-//	}
-	
+
+
 	@RequestMapping("commentadd")
 	public String addComment(Comment p)
 	{
+		//System.out.println(p.getPost_id());
 		commentr.save(p);
 		return "dashboard";
 	}
-	
-	
+
+
 	@RequestMapping("commentdesorted")
 	//@ResponseBody
-	public ModelAndView getCommentSorted()
+	public ModelAndView getCommentDeSorted()
 	{
-		List<Comment>s=commentr.getCommentDeSorted(); //query From Repo by user
+		List<Comment>commentdesort=commentr.getCommentDeSorted(); //query From Repo by user
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("c",s);
-	//	mv.setViewName("usershow"); 
-		mv.setViewName("dashboard"); 
+		mv.addObject("commentList",commentdesort);
+		//mv.setViewName("usershow"); 
+			mv.setViewName("createcomment"); 
 		return mv;
 	}
-	
-	
+
+
 	@RequestMapping("commentsorted")
 	public ModelAndView postsorted()
-		{
-		List<Comment>s=commentr.findAll(); //query From Repo by user
-		
+	{
+		List<Comment>comments=commentr.findAll(); //query From Repo by user
+
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("s",s);
+		mv.addObject("commentList",comments);
 		mv.setViewName("usershow"); 
 
 		return mv;
-		//return l;
+
 	}
-//	return "dashboard2";
-	
-	
+
+
+
 
 }

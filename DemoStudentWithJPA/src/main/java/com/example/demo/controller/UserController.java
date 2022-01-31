@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.dao.CommentRepo;
 import com.example.demo.dao.PostRepo;
 import com.example.demo.dao.UserRepo;
+import com.example.demo.model.Comment;
 import com.example.demo.model.Post;
 import com.example.demo.model.User;
 
@@ -24,9 +26,13 @@ public class UserController
 	public int userx_id;
 	@Autowired
 	PostController post_controller ;//= new PostController();
+//	@Autowired
+//	CommentController comment_controller ;
+	
 	@Autowired
 	PostRepo postr;
-	
+	@Autowired
+	CommentRepo commentr2;
 	
 	@Autowired
 	UserRepo r;
@@ -78,6 +84,9 @@ public class UserController
 		Post post_details1 =post_details.get();
 		mv.addObject("post",post_details1);
 		
+		List<Comment>comment_bypost = commentr2.findByPost_Id(post_id);
+		//mv=comment_controller.getCommentDeSorted();
+		mv.addObject("commentList",comment_bypost);
 		mv.setViewName("createcomment"); 
 		return mv;
 	}
@@ -90,17 +99,17 @@ public class UserController
 		return "index";
 	}
 
-	@RequestMapping("find")
-	public ModelAndView singleUser(@RequestParam int user_id)
-	{
-		ModelAndView mv=new ModelAndView("usershow");
-
-		Optional<User>o=r.findById(user_id);
-		User s=o.get();
-		int p = s.getUser_pass();
-		mv.addObject("s",p);
-		return mv;
-	}
+//	@RequestMapping("find")
+//	public ModelAndView singleUser(@RequestParam int user_id)
+//	{
+//		ModelAndView mv=new ModelAndView("usershow");
+//
+//		Optional<User>o=r.findById(user_id);
+//		User s=o.get();
+//		int p = s.getUser_pass();
+//		mv.addObject("s",p);
+//		return mv;
+//	}
 
 	@RequestMapping("login")
 	public ModelAndView loginUser(@RequestParam String user_name,@RequestParam String user_pass)

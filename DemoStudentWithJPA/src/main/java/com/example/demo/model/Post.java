@@ -29,14 +29,14 @@ public class Post
 	
 	@ManyToOne
 	@JoinColumn(name="user_id", insertable = false, updatable = false)
-	//@Column(name="uid")
 	private User user;	
 	@Column(name="user_id")
 	private Integer user_id;
+	
 	private String post_title;
 	private String post_info;
 	
-	@OneToMany(mappedBy="post",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy="post",cascade=CascadeType.ALL)
 	private Set<Comment> user_comment = new HashSet<>();
 	
 	private boolean post_status;
@@ -89,11 +89,11 @@ public class Post
 		this.post_status = post_status;
 	}
 
-	@Override
-	public String toString() {
-		return "Post [post_id=" + post_id + ", user=" + user + ", user_id=" + user_id + ", post_title=" + post_title
-				+ ", post_info=" + post_info + ", user_comment=" + user_comment + ", post_status=" + post_status + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Post [post_id=" + post_id + ", user=" + user + ", user_id=" + user_id + ", post_title=" + post_title
+//				+ ", post_info=" + post_info + ", user_comment=" + user_comment + ", post_status=" + post_status + "]";
+//	}
 
 	public int getUser_id() {
 		return user_id;

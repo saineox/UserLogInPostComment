@@ -24,22 +24,15 @@ public class PostController
 {
 	@Autowired
 	PostRepo postr;
+	
 
-	//	@RequestMapping("post")
-	//	public String post()
-	//	{
-	//		return "post";
-	//	}
-	//UserController
 
 	@RequestMapping("postadd")
 	public String addPost(Post p)
 	{
 		System.out.println(p.getUser_id());
 		//		Post p =o.get();
-		//		 int dbid = p.
-		//		 int dbpass = s.getUser_pass();
-		//p.setUser(userx_id);
+	
 		postr.save(p);
 		return "dashboard";
 	}
@@ -61,12 +54,14 @@ public class PostController
 	@RequestMapping("postsorted")
 	public ModelAndView postsorted()
 	{
+//		int user_userx_id=usercontroller.userx_id;
+//		String user_userx_name=usercontroller.userx_name;
+//		User user_details1 =user_details.get();
+		
 		List<Post>postList=postr.findAll(); //query From Repo by user
-
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("postList",postList);
 		mv.setViewName("dashboard"); 
-
 		return mv;
 
 	}

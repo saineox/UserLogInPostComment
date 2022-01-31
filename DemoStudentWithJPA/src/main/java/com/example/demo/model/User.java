@@ -32,6 +32,9 @@ public class User
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	private Set<Post> user_post = new HashSet<>();
 
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+	private Set<Comment> user_comment = new HashSet<>();
+	
 	public int getUser_id() {
 		return user_id;
 	}
@@ -66,11 +69,11 @@ public class User
 		this.user_post = user_post;
 	}
 
-	@Override
-	public String toString() {
-		return "User [user_id=" + user_id + ", user_name=" + user_name + ", user_pass=" + user_pass + ", user_post="
-				+ user_post + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "User [user_id=" + user_id + ", user_name=" + user_name + ", user_pass=" + user_pass + ", user_post="
+//				+ user_post + "]";
+//	}
 
 
 
