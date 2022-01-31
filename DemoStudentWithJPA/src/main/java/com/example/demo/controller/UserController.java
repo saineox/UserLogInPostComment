@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,8 +25,14 @@ public class UserController
 	@Autowired
 	PostController post_controller ;//= new PostController();
 	@Autowired
+	PostRepo postr;
+	
+	
+	@Autowired
 	UserRepo r;
 
+	
+	
 	@RequestMapping("index")
 	public String index()
 	{
@@ -58,13 +65,19 @@ public class UserController
 		mv.setViewName("createpost"); 
 		return mv;
 	}
-	@RequestMapping("createcomment")
-	public ModelAndView addComment()
+	
+	@RequestMapping("createcomment/{post_id}")
+	public ModelAndView addComment(@PathVariable Integer post_id)
 	{
-		Optional<User>o=r.findByUser_name(userx_name);
-		User s=o.get();
+		Optional<User>user_details=r.findByUser_name(userx_name);
+		User user_details1 =user_details.get();
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("user",s);
+		mv.addObject("user",user_details1);
+		
+		Optional<Post>post_details=postr.findById(post_id);
+		Post post_details1 =post_details.get();
+		mv.addObject("post",post_details1);
+		
 		mv.setViewName("createcomment"); 
 		return mv;
 	}

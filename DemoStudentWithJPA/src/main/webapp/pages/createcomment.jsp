@@ -18,19 +18,36 @@
 <body>
 	<h1 class="h2" >Welcome to Blog system id: ${user.user_id}  Name: ${user.user_name}</h1>
 
+
+	<div class="span8">
+		<h1>${post.post_title}</h1>
+		<p>${post.post_info}</p>
+		<div>
+			<span class="badge badge-success">Posted 2012-08-02 20:47:04</span><div class="pull-right"><span class="label">alice</span> <span class="label">story</span> <span class="label">blog</span> <span class="label">personal</span></div>
+		</div> 
+		<hr>
+	</div>
+
+
+
 <div class="container">
 	<div class="row">
 	    
 	    <div class="col-md-8 col-md-offset-2">
 	        
+
+
     		<h1>Create Comment</h1>
     		
     		<form action="/commentadd" method="POST">
-    		    
+    		    <input type="hidden" name="user_id" value=${user.user_id}>
+    		     <input type="hidden" name="user_name" value=${user.user_name}>
+    		     <input type="hidden" name="post_id" value=${post_id}>
     	
     		    
     		    <div class="form-group">
     		        <label for="user_comm">comment <span class="require">*</span></label>
+					
     		        <input type="text" class="form-control" name="user_comm" />
     		    </div>
     		    

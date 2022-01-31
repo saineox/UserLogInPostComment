@@ -64,8 +64,16 @@
 												<!-- <button type="button" class="btn btn-mini  btn-success"><a href="createcomment"><i class="icon-comment"></i>
 												
 												Create Comment</a></button> -->
-												<button type="button" class="btn btn-mini  btn-inverse"><a href="createcomment/" <c:out value="${post.post_id}" />><i class="icon-comment"></i>
+												<button type="button" class="btn btn-mini  btn-inverse"><a href="createcomment/${post.post_id}" ><i class="icon-comment"></i>
 												Create Comment</a></button>
+
+												<!-- <c:url value="/createcomment" context="/JSTLExample" var="url" scope="request">
+													<c:param name="user_id" value="rockey" />
+													<c:param name="post_id" value="post_title" />
+												</c:url> -->
+											
+												<!-- ${requestScope.url} -->
+											
 												 <!-- <span class="label">personal</span> -->
 												</div>
 										</div>
