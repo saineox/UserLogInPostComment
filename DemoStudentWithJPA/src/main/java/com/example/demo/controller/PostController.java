@@ -63,9 +63,9 @@ public class PostController
 	{
 		List<Post>postList=postr.findAll(); //query From Repo by user
 
-		ModelAndView mv=new ModelAndView("usershow");
+		ModelAndView mv=new ModelAndView();
 		mv.addObject("postList",postList);
-		//mv.setViewName("usershow"); 
+		mv.setViewName("dashboard"); 
 
 		return mv;
 

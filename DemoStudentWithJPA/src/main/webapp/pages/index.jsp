@@ -13,7 +13,21 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+<style>
+#login .container #login-row #login-column #login-box {
+	/* margin-top: 120px; */
+	max-width: 600px;
+	height: 320px;
+	border: 1px solid #998a8a;
+	background-color: #68ffeb;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+	padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+	margin-top: -85px;
+  }
+</style>
 </head>
 
 
@@ -40,7 +54,7 @@
 							</div>
 							<div class="form-group">
 								<label for="remember-me" class="text-info"><span>Remember
-										me</span> <span><input id="remember-me" name="remember-me"
+										me</span><span><input id="remember-me" name="remember-me"
 										type="checkbox"></span></label><br> <input type="submit"
 									name="submit" class="btn btn-info btn-md" value="SignIn">
 								<button class="btn btn-info btn-md" type="submit" formaction="signup">SignUp</button>
