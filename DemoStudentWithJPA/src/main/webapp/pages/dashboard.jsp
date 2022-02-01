@@ -4,97 +4,143 @@
 		<html>
 
 		<head>
-			<meta charset="ISO-8859-1">
+			<!-- <meta charset="ISO-8859-1">
+			 -->
+			<meta charset="ISO-8601">
 			<title>Welcome User</title>
-
-			<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
-				rel="stylesheet" id="bootstrap-css">
-			<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-			<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+			<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 			<!------ Include the above in your HEAD tag ---------->
+			<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"></script>
+		<script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+		<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+			crossorigin="anonymous"></script>
+
+		<script>$(function () {
+				'use strict'
+
+				$('[data-toggle="offcanvas"]').on('click', function () {
+					$('.offcanvas-collapse').toggleClass('open')
+				})
+			})
+		</script>
+			<style>
+				body {
+					margin: 0;
+					padding: 0;
+					background-color: #c5e0e4;
+					height: 100vh;
+				}
+
+			</style>
+			
 		</head>
 
 		<body>
-			<h1 class="h2" class="background-color.bg-primary">Welcome to Blog system id: ${user.user_id} Name:
-				${user.user_name}</h1>
-				<div class="alert alert-primary" role="alert">
-					Welcome to Blog system id: ${user.user_id} Name:
-				${user.user_name}
-				  </div>
-			<div class="row">
-				<div class="span4">
-					<div class="sidebar-nav">
-						<div class="well">
-							<ul class="nav nav-list">
-								<li class="nav-header">Main</li>
-								<li class="active"><a href="dashboard"><i class="icon-home"></i>
-										Dashboard</a></li>
-								<li><a href="createpost"><i class="icon-edit"></i> Create
-										Blog Post</a></li>
-								
-								<li><a href="postsorted"><i class="icon-user"></i>
-										postsorted</a></li>
-								<li><a href="postdesorted"><i class="icon-user"></i>
-										postdesorted</a></li>
+			<nav class="navbar navbar-expand-lg bg-warning warning-color">
 
-										<!-- <li><a href="createcomment"><i class="icon-comment"></i>
-											Create Comment</a></li>
-								<li><a href="commentsorted"><i class="icon-comment"></i>
-										Comments</a></li>
-								<li><a href="commentdesorted"><i class="icon-picture"></i>
-										commentdesorted</a></li> -->
-										<a href="commentsorted"><i class="icon-comment"></i>
-											Comments</a></li>
+				<!-- Navbar brand -->
+				<a class="navbar-brand" href="#">Welcome To Blog
+					${user.user_name}</a>
 
-							</ul>
+				<!-- Collapse button -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+					aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<!-- Collapsible content -->
+				<div class="collapse navbar-collapse" id="basicExampleNav">
+
+					<!-- Links -->
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="postdesorted">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link icon-edit" href="createpost">Create Post</a>
+						</li>
+						<!-- <li class="nav-item">
+					  <a class="nav-link" href="#">Pricing</a>
+					</li> -->
+
+						<!-- Dropdown -->
+						<!-- <li class="nav-item dropdown">
+					  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Dropdown</a>
+					  <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+					  </div>
+					</li> -->
+
+					</ul>
+					<!-- Links -->
+
+					<form class="form-inline">
+						<div class="md-form my-0">
+							<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 						</div>
-					</div>
+					</form>
 				</div>
+				<!-- Collapsible content -->
+
+			</nav>
+			<main role="main" class="container">
+
+
+				<div class="my-3 p-3 bg-white rounded shadow-sm">
+					<h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+
+					<c:forEach items="${postList}" var="post" varStatus="loop">
+
+						<div class="media text-muted pt-3">
+							<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32"
+								xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+								preserveAspectRatio="xMidYMid slice" focusable="false">
+								<title>Placeholder</title>
+								<rect width="100%" height="100%" fill="#007bff" /><text x="50%" y="50%" fill="#007bff"
+									dy=".3em">32x32</text>
+							</svg>
+
+							<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+								<strong class="d-block text-gray-dark"><a href="createcomment/${post.post_id}">
+										<c:out value="${post.post_title}" />
+									</a>
+								</strong>
+								<c:out value="${post.post_info}" />
+								<span class="badge badge-success">Post Status Deleted: ${post.post_status}</span>
+								<span class="badge badge-success">Post No:${post.post_id}</span>
+
+							</p>
+
+							<button type="button" class="btn btn-danger btn-sm"><a class="text-white "
+									href="postupdate/${post.post_id}"><i class="icon-comment"></i>
+
+									Mark as deleted </a></button>
+							<button type="button" class="btn btn-success btn-sm"><a class="text-white"
+									href="createcomment/${post.post_id}"><i class="icon-comment"></i>
+									Create Comment</a></button>
+						</div>
+
+					</c:forEach>
 
 
 
-				<div class="span8">
-					<table>
-						<c:forEach items="${postList}" var="post" varStatus="loop">
-							<tr>
-								<td>
-									<h1><a href="createcomment/${post.post_id}" >
-											<c:out value="${post.post_title}" /> 
-										</a>
-									</h1>
-									<p><c:out value="${post.post_info}" /></p>
-										<div>
-											<span class="badge badge-success">${post.post_status}</span>
-										
+			</main>
 
-										
-											<div class="pull-right">
-												<button type="button" class="btn btn-mini  btn-md"><a class="text-white" href="postupdate/${post.post_id}"><i class="icon-comment"></i>
-												
-												Mark as deleted </a></button> 
-												<button type="button" class="color badge-success"><a class="text-white" href="createcomment/${post.post_id}" ><i class="icon-comment"></i>
-												Create Comment</a></button>
 
-												<!-- <c:url value="/createcomment" context="/JSTLExample" var="url" scope="request">
-													<c:param name="user_id" value="rockey" />
-													<c:param name="post_id" value="post_title" />
-												</c:url> -->
-											
-												<!-- ${requestScope.url} -->
-											
-												 <!-- <span class="label">personal</span> -->
-												</div>
-										</div>
-										<hr>
-								</td>
-							</tr>
-						</c:forEach>
-					</table>
-				
-					
-				</div>
+	
 
-			</div>
+
 
 
 

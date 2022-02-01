@@ -44,10 +44,10 @@ public class UserController
 	{
 		return "index";
 	}
-	@RequestMapping("dashboard")
+	@RequestMapping("index2")
 	public String dashboard()
 	{
-		return "dashboard";
+		return "dashboard2";
 	}
 
 	

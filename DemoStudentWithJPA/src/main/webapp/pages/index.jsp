@@ -55,7 +55,7 @@ body {
 							</div>
 							<div class="form-group">
 								<label for="password" class="text-info">Password:</label><br>
-								<input type="text" name="user_pass" id="password"
+								<input type="password" name="user_pass" id="password"
 									class="form-control">
 							</div>
 							<div class="form-group">
