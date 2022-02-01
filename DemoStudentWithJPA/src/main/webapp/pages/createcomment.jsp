@@ -19,11 +19,14 @@
 		</head>
 
 		<body>
-			<h1 class="h2">Welcome to Blog user id: ${user.user_id} Name: ${user.user_name}</h1>
+			<!-- <h1 class="h2">Welcome to Blog user id: ${user.user_id} Name: ${user.user_name}</h1> -->
 
 			<div class="container">
 				<div class="row">
-
+					<div class="alert alert-primary" role="alert">
+						Welcome to Blog system id: ${user.user_id} Name:
+					${user.user_name}
+					  </div>
 
 					<div class="col-md-8 col-md-offset-2">
 						<a href="#" onClick="history.go(-1)">
@@ -52,10 +55,10 @@
 											<span class="badge badge-success">Posted 2012-08-02 20:47:04</span>
 											<div class="pull-right">
 
-												<button type="button" class="btn btn-mini  btn-inverse"><a
+												<!-- <button type="button" class="btn btn-mini  btn-inverse"><a
 														href="/commentdel/${comment.comment_id}"><i
 															class="icon-comment"></i>
-														Mark As Delete Comment</a></button>
+														Mark As Delete Comment</a></button> -->
 
 												<a href="#" onClick="history.go(-1)">Go Back</a>
 											</div>

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,13 +29,18 @@ public class PostController
 
 
 	@RequestMapping("postadd")
-	public String addPost(Post p)
+	public ModelAndView addPost(Post p)
 	{
-		System.out.println(p.getUser_id());
+	//	System.out.println(p.getUser_id());
 		//		Post p =o.get();
 	
 		postr.save(p);
-		return "dashboard";
+		List<Post>postList=postr.getPostDeSorted(); 
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("postList",postList);
+		//mv.setViewName("usershow"); 
+		mv.setViewName("dashboard"); 
+		return mv;
 	}
 
 
@@ -66,9 +72,24 @@ public class PostController
 
 	}
 
+	@RequestMapping("postupdate/{post_id}")
+	public ModelAndView addComment(@PathVariable Integer post_id)
+	{
+		Optional<Post>post_update=postr.findById(post_id);
+		Post post_update_object =post_update.get();
+		//if(!post_update_object.isPost_status())
+		post_update_object.setPost_status(!post_update_object.isPost_status());
+		postr.save(post_update_object);
+		List<Post>postList=postr.getPostDeSorted(); //query From Repo by user
+
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("postList",postList);
+		mv.setViewName("dashboard"); 
+		//return mv;
+		return new ModelAndView( "redirect:/postdesorted");
 
 
-
+	}
 
 
 

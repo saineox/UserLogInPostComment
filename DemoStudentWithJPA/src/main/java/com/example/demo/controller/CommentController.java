@@ -20,14 +20,20 @@ public class CommentController
 {
 	@Autowired
 	CommentRepo commentr;
-
+	@Autowired
+	PostController postcontroller;
 
 	@RequestMapping("commentadd")
-	public String addComment(Comment p)
+	public ModelAndView addComment(Comment p)
 	{
 		//System.out.println(p.getPost_id());
+		
 		commentr.save(p);
-		return "dashboard";
+		ModelAndView mv=new ModelAndView();
+		mv=postcontroller.postdesorted();
+		mv.setViewName("dashboard"); 
+		return mv;
+		
 	}
 
 

@@ -15,8 +15,12 @@
 		</head>
 
 		<body>
-			<h1 class="h2">Welcome to Blog system id: ${user.user_id} Name:
+			<h1 class="h2" class="background-color.bg-primary">Welcome to Blog system id: ${user.user_id} Name:
 				${user.user_name}</h1>
+				<div class="alert alert-primary" role="alert">
+					Welcome to Blog system id: ${user.user_id} Name:
+				${user.user_name}
+				  </div>
 			<div class="row">
 				<div class="span4">
 					<div class="sidebar-nav">
@@ -60,15 +64,15 @@
 									</h1>
 									<p><c:out value="${post.post_info}" /></p>
 										<div>
-											<span class="badge badge-success">Posted 2012-08-02 20:47:04</span>
+											<span class="badge badge-success">${post.post_status}</span>
 										
 
 										
 											<div class="pull-right">
-												<!-- <button type="button" class="btn btn-mini  btn-success"><a href="createcomment"><i class="icon-comment"></i>
+												<button type="button" class="btn btn-mini  btn-md"><a class="text-white" href="postupdate/${post.post_id}"><i class="icon-comment"></i>
 												
-												Create Comment</a></button> -->
-												<button type="button" class="btn btn-mini  btn-inverse"><a href="createcomment/${post.post_id}" ><i class="icon-comment"></i>
+												Mark as deleted </a></button> 
+												<button type="button" class="color badge-success"><a class="text-white" href="createcomment/${post.post_id}" ><i class="icon-comment"></i>
 												Create Comment</a></button>
 
 												<!-- <c:url value="/createcomment" context="/JSTLExample" var="url" scope="request">
