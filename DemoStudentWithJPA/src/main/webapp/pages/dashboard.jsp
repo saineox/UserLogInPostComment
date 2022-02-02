@@ -99,7 +99,10 @@
 
 				<div class="my-3 p-3 bg-white rounded shadow-sm">
 					<h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
-
+					<!-- <div class="alert alert-primary" role="alert">
+						This is a primary alert—check it out!
+					  </div> -->
+					  
 					<c:forEach items="${postList}" var="post" varStatus="loop">
 
 						<div class="media text-muted pt-3">
@@ -117,7 +120,19 @@
 									</a>
 								</strong>
 								<c:out value="${post.post_info}" />
+								<%
+							
+								if(1==1)
+								{
+								%>
+								<p></p>
+								<%
+								}
+								%>
+								<a href="#" data-abc="true"><i class="fa fa-heart text-danger"></i></a>
 								<span class="badge badge-success">Post Status Deleted: ${post.post_status}</span>
+								
+
 								<span class="badge badge-success">Post No:${post.post_id}</span>
 
 							</p>

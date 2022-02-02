@@ -17,5 +17,7 @@ public interface UserRepo extends JpaRepository<User, Integer>
 	
 	@Query("from User where user_name = ?1")
 	Optional<User> findByUser_name(String user_name);
+//	@Query("from User where user_name = ?1")
+//	List<User> findByUser_name1(String user_name);
 
 }

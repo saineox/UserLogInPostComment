@@ -13,9 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.dao.CommentRepo;
 import com.example.demo.dao.PostRepo;
 import com.example.demo.dao.UserRepo;
+
+import com.example.demo.exception.NotFoundByUser;
 import com.example.demo.model.Comment;
 import com.example.demo.model.Post;
 import com.example.demo.model.User;
+
+import javassist.NotFoundException;
 
 @Controller
 public class UserController 
@@ -73,9 +77,10 @@ public class UserController
 	}
 	
 	@RequestMapping("createcomment/{post_id}")
-	public ModelAndView addComment(@PathVariable Integer post_id)
+	public ModelAndView addComment(@PathVariable Integer post_id) throws NotFoundException
 	{
 		Optional<User>user_details=r.findByUser_name(userx_name);
+	
 		User user_details1 =user_details.get();
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("user",user_details1);
@@ -95,7 +100,7 @@ public class UserController
 	@RequestMapping("signup")
 	public String addUser(User s)
 	{
-		r.save(s);
+		//r.save(s);
 		return "index";
 	}
 
@@ -114,12 +119,25 @@ public class UserController
 	@RequestMapping("login")
 	public ModelAndView loginUser(@RequestParam String user_name,@RequestParam String user_pass)
 	{
+//		if (user_name.equals(null))
+//		{
+//			throw new NotFoundByUser("User Not Found");	
+//		}
 		ModelAndView mv=new ModelAndView();
-
-		Optional<User>o=r.findByUser_name(user_name);
-		User s=o.get();
-		int dbid = s.getUser_id();
-		int dbpass = s.getUser_pass();
+		
+		Optional<User>user_details=r.findByUser_name(user_name);
+		
+//		if (user_details.equals(null))
+		if (user_details==null)
+		{
+			throw new NotFoundByUser("User Not Found");
+		}
+		
+		User user_details_object=user_details.get();
+		
+		
+		int dbid = user_details_object.getUser_id();
+		int dbpass = user_details_object.getUser_pass();
 		int hashValueUser = user_pass.hashCode();  
 		if (dbpass==hashValueUser)
 		{
@@ -127,14 +145,14 @@ public class UserController
 			userx_name = user_name;
 			mv=post_controller.postdesorted();
 			
-			mv.addObject("user",s);
+			mv.addObject("user",user_details_object);
 			mv.setViewName("dashboard"); 
 			
 
 		}
 		else
 		{
-			mv.setViewName("index"); 
+			mv.setViewName("redirect:/index"); 
 		}
 		return mv;
 

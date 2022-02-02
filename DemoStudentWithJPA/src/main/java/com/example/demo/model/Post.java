@@ -1,5 +1,6 @@
 package com.example.demo.model;
 import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -51,7 +52,7 @@ public class Post
 	private boolean post_status;
 	@CreationTimestamp
 	 @Column(name="post_time") 
-    private LocalDateTime createDateTime; // insert date
+    private Time createDateTime; // insert date
 	public int getPost_id() {
 		return post_id;
 	}
@@ -94,10 +95,10 @@ public class Post
 	public void setPost_status(boolean post_status) {
 		this.post_status = post_status;
 	}
-	public LocalDateTime getCreateDateTime() {
+	public Time getCreateDateTime() {
 		return createDateTime;
 	}
-	public void setCreateDateTime(LocalDateTime createDateTime) {
+	public void setCreateDateTime(Time createDateTime) {
 		this.createDateTime = createDateTime;
 	}
    

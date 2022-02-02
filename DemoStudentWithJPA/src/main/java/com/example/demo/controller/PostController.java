@@ -25,15 +25,17 @@ public class PostController
 {
 	@Autowired
 	PostRepo postr;
-	
+
+	@Autowired
+	UserController usercontroller ;
 
 
 	@RequestMapping("postadd")
 	public ModelAndView addPost(Post p)
 	{
-	//	System.out.println(p.getUser_id());
+		//	System.out.println(p.getUser_id());
 		//		Post p =o.get();
-	
+
 		postr.save(p);
 		List<Post>postList=postr.getPostDeSorted(); 
 		ModelAndView mv=new ModelAndView();
@@ -47,6 +49,9 @@ public class PostController
 	@RequestMapping("postdesorted")
 	public ModelAndView postdesorted()
 	{
+		int user_userx_id=usercontroller.userx_id;
+		String user_userx_name=usercontroller.userx_name;
+
 		List<Post>postList=postr.getPostDeSorted(); //query From Repo by user
 
 		ModelAndView mv=new ModelAndView();
@@ -60,10 +65,10 @@ public class PostController
 	@RequestMapping("postsorted")
 	public ModelAndView postsorted()
 	{
-//		int user_userx_id=usercontroller.userx_id;
-//		String user_userx_name=usercontroller.userx_name;
-//		User user_details1 =user_details.get();
-		
+		//		int user_userx_id=usercontroller.userx_id;
+		//		String user_userx_name=usercontroller.userx_name;
+		//		User user_details1 =user_details.get();
+
 		List<Post>postList=postr.findAll(); //query From Repo by user
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("postList",postList);
@@ -75,16 +80,25 @@ public class PostController
 	@RequestMapping("postupdate/{post_id}")
 	public ModelAndView addComment(@PathVariable Integer post_id)
 	{
+		int user_userx_id=usercontroller.userx_id;
+		String user_userx_name=usercontroller.userx_name;
+		System.out.println(user_userx_id);
+
 		Optional<Post>post_update=postr.findById(post_id);
 		Post post_update_object =post_update.get();
-		//if(!post_update_object.isPost_status())
-		post_update_object.setPost_status(!post_update_object.isPost_status());
-		postr.save(post_update_object);
+
+		if(user_userx_id==post_update_object.getUser_id())
+		{
+			post_update_object.setPost_status(!post_update_object.isPost_status());
+
+			postr.save(post_update_object);
+		}
 		List<Post>postList=postr.getPostDeSorted(); //query From Repo by user
 
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("postList",postList);
 		mv.setViewName("dashboard"); 
+
 		//return mv;
 		return new ModelAndView( "redirect:/postdesorted");
 
