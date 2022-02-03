@@ -142,7 +142,7 @@
 						<div class="form-group">
 							<label for="user_comm">comment <span class="require">*</span></label>
 
-							<input type="text" class="form-control" name="user_comm" />
+							<input type="text" class="form-control" name="user_comm" required="true" />
 						</div>
 
 						<div class="form-group">

@@ -97,12 +97,7 @@ public class UserController
 	}
 	
 	
-	@RequestMapping("signup")
-	public String addUser(User s)
-	{
-		//r.save(s);
-		return "index";
-	}
+	
 
 //	@RequestMapping("find")
 //	public ModelAndView singleUser(@RequestParam int user_id)
@@ -119,14 +114,8 @@ public class UserController
 	@RequestMapping("login")
 	public ModelAndView loginUser(@RequestParam String user_name,@RequestParam String user_pass)
 	{
-//		if (user_name.equals(null))
-//		{
-//			throw new NotFoundByUser("User Not Found");	
-//		}
 		ModelAndView mv=new ModelAndView();
-		
 		Optional<User>user_details=r.findByUser_name(user_name);
-		
 //		if (user_details.equals(null))
 		if (user_details==null)
 		{
@@ -158,6 +147,20 @@ public class UserController
 
 	}
 
+	
+	@RequestMapping("signup")
+	public String addUser(User s)
+	{
+		return "index";
+	}
+	@RequestMapping("signout")
+	public String sginOut()
+	{
+		userx_id=0;
+		userx_name="";
+		return "index";
+	}
+	
 
 	@RequestMapping("usershow")
 	public ModelAndView showStudent(User s)
@@ -203,4 +206,5 @@ public class UserController
 		return mv;
 	}
 	 */
+	
 }

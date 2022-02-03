@@ -51,12 +51,12 @@ body {
 							<div class="form-group">
 								<label for="username" class="text-info">Username:</label><br>
 								<input type="text" name="user_name" id="username"
-									class="form-control">
+									class="form-control" required="true">
 							</div>
 							<div class="form-group">
 								<label for="password" class="text-info">Password:</label><br>
 								<input type="password" name="user_pass" id="password"
-									class="form-control">
+									class="form-control" required="true">
 							</div>
 							<div class="form-group">
 								<label for="remember-me" class="text-info"><span>Remember

@@ -74,12 +74,12 @@
 							<input type="hidden" name="user_id" value=${user.user_id}>
 							<input type="hidden" name="user_name" value=${user.user_name}>
 							<label for="title">Title <span class="require">*</span></label>
-							<input type="text" class="form-control" name="post_title" />
+							<input type="text" class="form-control" name="post_title" required="true" />
 						</div>
 
 						<div class="form-group">
 							<label for="description">Description</label>
-							<textarea rows="5" class="form-control" name="post_info"></textarea>
+							<textarea rows="5" class="form-control" name="post_info" required="true"></textarea>
 						</div>
 
 						<div class="form-group">

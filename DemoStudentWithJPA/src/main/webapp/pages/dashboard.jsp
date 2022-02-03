@@ -84,12 +84,17 @@
 
 					</ul>
 					<!-- Links -->
-
+				
 					<form class="form-inline">
 						<div class="md-form my-0">
-							<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+							<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" required="true">
 						</div>
 					</form>
+				</div>
+				<div>
+					<a href="signout"><button type="button" class="btn btn-danger btn-sm "> 
+						 <i class="icon-user"></i>				
+						SignOut</button></a>
 				</div>
 				<!-- Collapsible content -->
 
@@ -137,11 +142,11 @@
 
 							</p>
 
-							<button type="button" class="btn btn-danger btn-sm"><a class="text-white "
+							<button type="button" class="btn btn-danger btn-xs"><a class="text-white "
 									href="postupdate/${post.post_id}"><i class="icon-comment"></i>
 
 									Mark as deleted </a></button>
-							<button type="button" class="btn btn-success btn-sm"><a class="text-white"
+							<button type="button" class="btn btn-success btn-xs"><a class="text-white"
 									href="createcomment/${post.post_id}"><i class="icon-comment"></i>
 									Create Comment</a></button>
 						</div>
